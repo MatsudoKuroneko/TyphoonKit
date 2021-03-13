@@ -1,6 +1,7 @@
 #pragma once
 
-enum eScene {
+enum eScene{
     Title,
+    Diff,
     Game,
 };

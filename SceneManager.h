@@ -1,5 +1,5 @@
 #pragma once
-#include <stack> //ã‚É‚¶‚á‚ñ‚¶‚á‚ñæ‚Á‚¯‚Ä‚­‚â‚Â
+#include <stack> //ï¿½ï¿½É‚ï¿½ï¿½ï¿½ñ‚¶‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½
 #include <memory>
 #include "BaseScene.h"
 #include "IOnSceneChangedListener.h"
@@ -10,8 +10,8 @@ public:
 	SceneManager();
 	~SceneManager() = default;
 	bool loop() const;
-	void onSceneChanged(const eScene scene, const Parameter & parameter, const bool stackClear) override; // Scene‘JˆÚŒŸo’Ê’m
+	void onSceneChanged(const eScene scene, const Parameter& parameter, const bool stackClear) override; // Sceneï¿½Jï¿½ÚŒï¿½ï¿½oï¿½Ê’m
 
 private:
-	std::stack<std::shared_ptr<BaseScene>> _sceneStack; //ƒV[ƒ“‚ÌƒXƒ^ƒbƒN
+	std::stack<std::shared_ptr<BaseScene>> _sceneStack; //ï¿½Vï¿½[ï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½bï¿½N
 };

@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Parameter.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="FPS.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="IOnSceneChangedListener.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="SceneManager.h" />

@@ -8,5 +8,5 @@ public:
     TitleScene(IOnSceneChangedListener* impl, const Parameter& parameter);
     virtual ~TitleScene() = default;
     void update() override;
-    void draw() override;
+    void draw() const override;
 };
