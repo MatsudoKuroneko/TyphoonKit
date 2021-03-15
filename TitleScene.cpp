@@ -25,5 +25,6 @@ void TitleScene::update()
 
 void TitleScene::draw() const
 {
-    DrawString(100, 100, "TitleScene", GetColor(255, 255, 255));
+    SetFontSize(30);
+    DrawString(100, 100, "愛符「レインボーレインボウ」", GetColor(255, 255, 255));
 }

@@ -1,6 +1,10 @@
 #include "GameScene.h"
 #include <DxLib.h>
 
+bool loaded;
+static int frame,firebullet;
+
+
 const char* GameScene::ParameterTagLevel = "ParameterTagLevel";//パラメータのタグ「レベル」
 
 GameScene::GameScene(IOnSceneChangedListener* impl, const Parameter& parameter):BaseScene(impl, parameter)
@@ -17,5 +21,13 @@ void GameScene::update()
 
 void GameScene::draw() const
 {
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "Scene 2");
+	if (loaded == false) {
+		frame = LoadGraph("Resource/img/frame.png");
+		loaded = true;
+	}else{
+
+		DrawGraph(0, 0, frame, false);
+		DrawFormatString(100, 100, GetColor(255, 255, 255), "Scene 2");
+
+	}
 }

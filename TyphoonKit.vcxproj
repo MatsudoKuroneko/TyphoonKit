@@ -152,22 +152,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
+    <ClCompile Include="FrameLayer.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="WhenInitLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="FPS.h" />
+    <ClInclude Include="FrameLayer.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IOnSceneChangedListener.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="WhenInitLoad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

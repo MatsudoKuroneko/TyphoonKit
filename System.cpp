@@ -9,7 +9,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		èâä˙ê›íË
 	*/
 
-	SetGraphMode(1280, 960, 16, 60);
+	SetGraphMode(1280, 720, 16, 60);
 	ChangeWindowMode(TRUE);
 	SetDrawScreen(DX_SCREEN_BACK);
 	SetWindowSizeChangeEnableFlag(TRUE);

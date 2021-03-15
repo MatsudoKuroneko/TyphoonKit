@@ -1,9 +1,9 @@
 #include "DxLib.h"
 #include "FPS.h"
 
-int mStartTime;				//測定開始時刻
-float mFps;					//fps
-int frame;
+static int mStartTime;				//測定開始時刻
+static float mFps;					//fps
+static int frame;
 static const int N = 120;   //平均を取るサンプル数
 static const int FPS = 120; //設定したFPS
 int c;
