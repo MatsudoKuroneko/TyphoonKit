@@ -9,6 +9,9 @@ const void Score::AddScore(eScore data, int v)
 {
 	switch (data)
 	{
+		case Gametime:
+			gametime++;
+			break;
 
 		case HScore:
 			hscore += v;

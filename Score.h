@@ -5,8 +5,7 @@
 class Score
 {
 private:
-	Score();
-	~Score() = default;
+	Score() {};
 	int gametime,hscore, nscore;
 
 public:

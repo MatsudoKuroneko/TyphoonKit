@@ -156,12 +156,12 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="StartLoad.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="WhenInitLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
@@ -176,8 +176,8 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StartLoad.h" />
     <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="WhenInitLoad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

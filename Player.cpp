@@ -2,6 +2,7 @@
 #include "Player.h"
 #include <DxLib.h>
 #include <iostream>
+#include "Score.h"
 #include "GameScene.h"
 
 Player::Player()
@@ -19,12 +20,15 @@ Player::Player()
 
 bool Player::update()
 {
-	if (allanime < anime) {
-		anime = 0;
+	if (Score::Instance()->GetScore(Gametime) % 4 == 0) {
+		if (allanime <= anime) {
+			anime = 0;
+		}
+		else {
+			anime++;
+		}
 	}
-	else {
-		anime++;
-	}
+
 	return true;
 }
 

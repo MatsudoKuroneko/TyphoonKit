@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "StartLoad.h"
 
 using namespace std;
 
@@ -8,6 +9,8 @@ SceneManager::SceneManager()
 {
     Parameter parameter;
     onSceneChanged(eScene::Title, parameter, false);
+
+    StartLoad::Instance()->load();
 }
 
 bool SceneManager::loop() const
