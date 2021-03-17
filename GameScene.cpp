@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "Sprite.h"
 #include <DxLib.h>
 
 bool loaded;
@@ -9,25 +10,19 @@ const char* GameScene::ParameterTagLevel = "ParameterTagLevel";//ƒpƒ‰ƒ[ƒ^‚Ìƒ^ƒ
 
 GameScene::GameScene(IOnSceneChangedListener* impl, const Parameter& parameter):BaseScene(impl, parameter)
 {
+	_player = std::make_shared<Player>();
 	_level = parameter.get(ParameterTagLevel);
 }
 
 void GameScene::update()
 
 {
+	_player->update();
 	DrawString(100, 200, "Moving on TitleScene", GetColor(255, 255, 255));
 }
 
 
 void GameScene::draw() const
 {
-	if (loaded == false) {
-		frame = LoadGraph("Resource/img/frame.png");
-		loaded = true;
-	}else{
-
-		DrawGraph(0, 0, frame, false);
-		DrawFormatString(100, 100, GetColor(255, 255, 255), "Scene 2");
-
-	}
+	_player->draw();
 }
