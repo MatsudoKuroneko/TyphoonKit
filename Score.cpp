@@ -2,7 +2,7 @@
 
 const void Score::ResetScore()
 {
-	gametime, hscore, nscore = 0;
+	gametime, hscore, nscore, camerax, cameray = 0;
 }
 
 const void Score::AddScore(eScore data, int v)
@@ -21,6 +21,14 @@ const void Score::AddScore(eScore data, int v)
 			nscore += v;
 			break;
 
+		case CameraX:
+			camerax += v;
+			break;
+
+		case CameraY:
+			cameray += v;
+			break;
+
 	}
 }
 
@@ -32,15 +40,38 @@ const int Score::GetScore(eScore data)
 		return gametime;
 		break;
 
-	case HScore:
-		return hscore;
-		break;
-
 	case NScore:
 		return nscore;
+		break;
+	case CameraX:
+		return camerax;
+		break;
+
+	case CameraY:
+		return cameray;
 		break;
 
 	return -1;
 	}
 
 }
+
+const void Score::ConfirmScore(eScore data, int v)
+{
+	switch (data) {
+
+	case HScore:
+		hscore = v;
+		break;
+
+	case CameraX:
+		camerax = v;
+		break;
+
+	case CameraY:
+		cameray = v;
+		break;
+
+	}
+}
+

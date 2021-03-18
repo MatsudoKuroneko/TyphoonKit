@@ -4,4 +4,6 @@ enum eScore {
 	Gametime,
 	HScore,
 	NScore,
+	CameraX,
+	CameraY,
 };

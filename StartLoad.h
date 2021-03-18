@@ -7,11 +7,10 @@ enum StartLoads {
 class StartLoad
 {
 private:
-	int _frame;
-public:
-
 	StartLoad();
 	~StartLoad() = default;
+	int _frame;
+public:
 
 	static StartLoad* Instance() {
 		static StartLoad inst;
@@ -22,5 +21,3 @@ public:
 
 	const int Get(StartLoads data);
 };
-
-

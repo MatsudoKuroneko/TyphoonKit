@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ChangeWindowMode(TRUE);
 	SetDrawScreen(DX_SCREEN_BACK);
 	SetWindowSizeChangeEnableFlag(TRUE);
-	SetOutApplicationLogValidFlag(FALSE);
+	//SetOutApplicationLogValidFlag(FALSE);
 	SetMainWindowText("Danmaku Template");
 	//SetWindowSizeExtendRate(0.75);
 	DxLib_Init();

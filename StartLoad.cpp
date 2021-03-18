@@ -2,7 +2,8 @@
 #include <DxLib.h>
 
 StartLoad::StartLoad(){
-	_frame = LoadGraph("Resource/ui/frame.png");
+	_frame = LoadGraph("Resource/img/ui/frame.png");
+	printfDx("StartLoad: frameLoaded.\n");
 }
 
 const int StartLoad::Get(StartLoads data)
