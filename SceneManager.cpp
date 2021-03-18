@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "Load.h"
+#include "Bullet.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ SceneManager::SceneManager()
     onSceneChanged(eScene::Title, parameter, false);
 
     StartLoad::Instance()->load();
+    ShotData::Instance()->load();
 }
 
 bool SceneManager::loop() const

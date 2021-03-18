@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="Define.cpp" />
     <ClCompile Include="FrameLayer.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -167,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="eScore.h" />
     <ClInclude Include="FPS.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Define.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

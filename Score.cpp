@@ -56,6 +56,17 @@ const int Score::GetScore(eScore data)
 
 }
 
+/*!
+@brief フレーム区切り
+@param scene v1:全体フレーム
+@param parameter v2:分けフレーム
+*/
+const int Score::GetPace(int v1, int v2)
+{
+
+	return 0;
+}
+
 const void Score::ConfirmScore(eScore data, int v)
 {
 	switch (data) {
