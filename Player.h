@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprite.h"
+#include "Score.h"
 class Player : public Sprite
 {
 public:
@@ -9,5 +10,5 @@ public:
 	virtual void draw() const override;
 	float x, y;
 private:
-	int _img,_IMAGES[6],anime,allanime;
+	int _img,_IMAGES[6], _compassimg, _COMPASSIMAGES[3],anime,allanime;
 };

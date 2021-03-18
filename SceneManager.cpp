@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "GameScene.h"
-#include "StartLoad.h"
+#include "Load.h"
 
 using namespace std;
 

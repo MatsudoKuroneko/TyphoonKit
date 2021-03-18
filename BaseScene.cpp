@@ -1,5 +1,5 @@
 #include "BaseScene.h"
-#include "StartLoad.h"
+#include "Load.h"
 
 /*!
 @brief コンストラクタ

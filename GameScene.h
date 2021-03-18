@@ -2,6 +2,7 @@
 
 #include "BaseScene.h"
 #include <memory>
+#include "Load.h"
 #include "Player.h"
 
 class GameScene : public BaseScene
@@ -14,7 +15,7 @@ public:
 
 	void update() override;
 	void draw() const override;
-	
+	int GetImage(Loads data) const;
 
 private:
 	int _level;
