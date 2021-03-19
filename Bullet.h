@@ -61,14 +61,17 @@ public:
 		switch (data)
 		{
 		case(DS_FIRE_RED):
-			if (Score::Instance()->GetScore(Gametime) % 32 >= 0 && Score::Instance()->GetScore(Gametime) % 32 < 8)
+			
+			if ((Score::Instance()->GetScore(Gametime) % 14 >= 0 && Score::Instance()->GetScore(Gametime) % 14 < 2)|| (Score::Instance()->GetScore(Gametime) % 14 >= 12 && Score::Instance()->GetScore(Gametime) % 14 < 14)) {
 				return _imgs[0];
-			if (Score::Instance()->GetScore(Gametime) % 32 >= 8 && Score::Instance()->GetScore(Gametime) % 32 < 16)
+			}
+			if ((Score::Instance()->GetScore(Gametime) % 14 >=2 && Score::Instance()->GetScore(Gametime) % 14 < 4) || (Score::Instance()->GetScore(Gametime) % 14 >= 10 && Score::Instance()->GetScore(Gametime) % 14 < 12))
 				return _imgs[1];
-			if (Score::Instance()->GetScore(Gametime) % 32 >= 16 && Score::Instance()->GetScore(Gametime) % 32 < 24)
+			if ((Score::Instance()->GetScore(Gametime) % 14 >= 4 && Score::Instance()->GetScore(Gametime) % 14 < 6) || (Score::Instance()->GetScore(Gametime) % 14 >= 8 && Score::Instance()->GetScore(Gametime) % 14 < 10))
 				return _imgs[2];
-			if (Score::Instance()->GetScore(Gametime) % 32 >= 24 && Score::Instance()->GetScore(Gametime) % 32 < 32)
+			if (Score::Instance()->GetScore(Gametime) % 14 >= 6 && Score::Instance()->GetScore(Gametime) % 14 < 8)
 				return _imgs[3];
+			
 		}
 		return 0;
 	};
@@ -77,23 +80,22 @@ public:
 class Bullet : public Sprite
 {
 public:
-	Bullet(int x, int y, float speed, int angle, int accel, int maxspeed, ShotDatas id, int special = 0) {
+	Bullet(int x, int y, float speed, int angle, float accel, int maxspeed, ShotDatas id, int special = 0) {
 		_x = 352 + Score::Instance()->GetScore(CameraX) + x;
 		_y = Score::Instance()->GetScore(CameraY) + y;
-		_speed = speed;
-		_angle = angle + Define::PI / 2;
-		_id = ShotData::Instance()->Get(id);
+		_speed = accel;
+		_angle = angle * Define::PI / 180;
+		_id = id;
 		_special = special;
 	}
 	~Bullet() = default;
 
 	virtual bool update() override;
 	virtual void draw() const override;
-	
-	//void CreateShotA1(int x,int y,float speed,int angle,int id,int delay);
-	//void CreateShotA2(int x, int y, float speed, int angle, int accel,int maxspeed, int delay);
+
 private:
-	int _x, _y, _id, _special;
-	float _angle, _speed;
+	ShotDatas _id;
+	int _special;
+	float _x, _y, _angle, _speed;
 };
 
