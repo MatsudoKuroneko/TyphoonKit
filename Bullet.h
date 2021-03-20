@@ -7,7 +7,48 @@
 #include "Define.h"
 
 enum ShotDatas {
-	DS_BALL_SS_RED,
+	DS_BALL_S_RED,
+	DS_BALL_S_ORANGE,
+	DS_BALL_S_YELLOW,
+	DS_BALL_S_GREEN,
+	DS_BALL_S_SKY,
+	DS_BALL_S_BLUE,
+	DS_BALL_S_PURPLE,
+	DS_BALL_S_PINK,
+	DS_BALL_S_WHITE,
+	DS_BALL_M_RED,
+	DS_BALL_M_ORANGE,
+	DS_BALL_M_YELLOW,
+	DS_BALL_M_GREEN,
+	DS_BALL_M_SKY,
+	DS_BALL_M_BLUE,
+	DS_BALL_M_PURPLE,
+	DS_BALL_M_PINK,
+	DS_BALL_M_WHITE,
+	DS_DIA_RED,
+	DS_DIA_PINK,
+	DS_DIA_YELLOW,
+	DS_DIA_ORANGE,
+	DS_DIA_LEAF,
+	DS_DIA_GREEN,
+	DS_DIA_BLUE,
+	DS_DIA_DARKBLUE,
+	DS_DIA_SKY,
+	DS_DIA_PURPLE,
+	DS_DIA_REDPURPLE,
+	DS_DIA_DARK_RED,
+	DS_DIA_DARK_PINK,
+	DS_DIA_DARK_YELLOW,
+	DS_DIA_DARK_ORANGE,
+	DS_DIA_DARK_LEAF,
+	DS_DIA_DARK_GREEN,
+	DS_DIA_DARK_BLUE,
+	DS_DIA_DARK_DARKBLUE,
+	DS_DIA_DARK_SKY,
+	DS_DIA_DARK_PURPLE,
+	DS_DIA_DARK_REDPURPLE,
+	DS_DIA_BLACK,
+	DS_DIA_WHITE,
 	DS_FIRE_RED,
 };
 
@@ -15,18 +56,21 @@ class ShotData
 {
 private:
 	ShotData() {
-		addGroup("Resource/img/bullet/fire.png", 4, 4, 1, 32, 32, FIRE);
+		addGroup("Resource/img/bullet/normal.png", 9, 9, 1, 24, 24, N);
+		addGroup("Resource/img/bullet/medium.png", 9, 9, 1, 48, 48, M);
+		addGroup("Resource/img/bullet/dia.png", 22, 22, 1, 16, 32, D);
+		addGroup("Resource/img/bullet/diamono.png", 2, 2, 1, 16, 32, DM);
+		addGroup("Resource/img/bullet/fire.png", 4, 4, 1, 48, 48, FIRE);
 	};
 	~ShotData() = default;
 	std::vector<int> _imgs;
+	int N[9],M[9],D[22],DM[2], FIRE[4];
 public:
 
 	static ShotData* Instance() {
 		static ShotData inst;
 		return &inst;
 	};
-
-	int FIRE[4];
 
 	void load() {  }//コンストラクタ起動用。SceneManagerで起動させるようにする。
 
@@ -60,32 +104,67 @@ public:
 	const int Get(ShotDatas data) {
 		switch (data)
 		{
+					/*
+		case(DS_BALL_S_RED):
+		case(DS_BALL_S_ORANGE):
+		case(DS_BALL_S_YELLOW):
+		case(DS_BALL_S_GREEN):
+		case(DS_BALL_S_SKY):
+		case(DS_BALL_S_BLUE):
+		case(DS_BALL_S_PURPLE):
+		case(DS_BALL_S_PINK):
+		case(DS_BALL_S_WHITE):
+		case(DS_BALL_M_RED):
+		case(DS_BALL_M_ORANGE):
+		case(DS_BALL_M_YELLOW):
+		case(DS_BALL_M_GREEN):
+		case(DS_BALL_M_SKY):
+		case(DS_BALL_M_BLUE):
+		case(DS_BALL_M_PURPLE):
+		case(DS_BALL_M_PINK):
+		case(DS_BALL_M_WHITE):
+		case(DS_DIA_RED):
+		case(DS_DIA_PINK):
+		case(DS_DIA_YELLOW):
+		case(DS_DIA_ORANGE):
+		case(DS_DIA_GREEN):
+		case(DS_DIA_BLUE):
+		case(DS_DIA_DARKBLUE):
+		case(DS_DIA_SKY):
+		case(DS_DIA_PURPLE):
+		case(DS_DIA_WHITE):*/
 		case(DS_FIRE_RED):
 			
-			if ((Score::Instance()->GetScore(Gametime) % 14 >= 0 && Score::Instance()->GetScore(Gametime) % 14 < 2)|| (Score::Instance()->GetScore(Gametime) % 14 >= 12 && Score::Instance()->GetScore(Gametime) % 14 < 14)) {
-				return _imgs[0];
+			if ((Score::Instance()->GetScore(Gametime) % 28 >= 0 && Score::Instance()->GetScore(Gametime) % 28 < 4)|| (Score::Instance()->GetScore(Gametime) % 28 >= 24 && Score::Instance()->GetScore(Gametime) % 28 < 28)) {
+				return _imgs[42];
 			}
-			if ((Score::Instance()->GetScore(Gametime) % 14 >=2 && Score::Instance()->GetScore(Gametime) % 14 < 4) || (Score::Instance()->GetScore(Gametime) % 14 >= 10 && Score::Instance()->GetScore(Gametime) % 14 < 12))
-				return _imgs[1];
-			if ((Score::Instance()->GetScore(Gametime) % 14 >= 4 && Score::Instance()->GetScore(Gametime) % 14 < 6) || (Score::Instance()->GetScore(Gametime) % 14 >= 8 && Score::Instance()->GetScore(Gametime) % 14 < 10))
-				return _imgs[2];
-			if (Score::Instance()->GetScore(Gametime) % 14 >= 6 && Score::Instance()->GetScore(Gametime) % 14 < 8)
-				return _imgs[3];
-			
+			if ((Score::Instance()->GetScore(Gametime) % 28 >=4 && Score::Instance()->GetScore(Gametime) % 28 < 8) || (Score::Instance()->GetScore(Gametime) % 28 >= 20 && Score::Instance()->GetScore(Gametime) % 28 < 24))
+				return _imgs[43];
+			if ((Score::Instance()->GetScore(Gametime) % 28 >= 8 && Score::Instance()->GetScore(Gametime) % 28 < 12) || (Score::Instance()->GetScore(Gametime) % 28 >= 16 && Score::Instance()->GetScore(Gametime) % 28 < 20))
+				return _imgs[44];
+			if (Score::Instance()->GetScore(Gametime) % 28 >= 12 && Score::Instance()->GetScore(Gametime) % 28 < 16)
+				return _imgs[45];
+		
+		default:
+			return _imgs[data];
+
 		}
-		return 0;
 	};
 };
 
 class Bullet : public Sprite
 {
 public:
-	Bullet(int x, int y, float speed, int angle, float accel, int maxspeed, ShotDatas id, int special = 0) {
+	Bullet(int x, int y, float speed, int angle, float accel, int maxspeed, ShotDatas id, int delay,int special = 0) {
 		_x = 352 + Score::Instance()->GetScore(CameraX) + x;
 		_y = Score::Instance()->GetScore(CameraY) + y;
-		_speed = accel;
+		_speed = speed;
+		_accel = accel;
+		_maxspeed = maxspeed;
 		_angle = angle * Define::PI / 180;
+		_showangle = (angle+90) * Define::PI / 180;
 		_id = id;
+		_delay = Score::Instance()->GetScore(Gametime) + delay;
 		_special = special;
 	}
 	~Bullet() = default;
@@ -95,7 +174,7 @@ public:
 
 private:
 	ShotDatas _id;
-	int _special;
-	float _x, _y, _angle, _speed;
+	int _special,_delay;
+	float _x, _y, _angle,_showangle, _speed,_accel, _maxspeed;
 };
 
