@@ -4,39 +4,72 @@
 #include <iostream>
 #include "Score.h"
 #include "GameScene.h"
+#include "Load.h"
 
 Player::Player()
 {
-	//Player‰ŠúÝ’è
-	x = 576/2;
-	y = 672/4 * 3;
-	anime = 0;
-	allanime = 1;
 
-	_img = LoadDivGraph("Resource/img/spdot/player_reimu.png", 6, 2, 3, 48, 48, _IMAGES);
-	_compassimg = LoadDivGraph("Resource/img/spdot/compass.png", 3, 3, 1, 300, 300, _COMPASSIMAGES);
-	printfDx("Player: _imgLoaded.\n");
-	
 }
 
 bool Player::update()
 {
-	if (Score::Instance()->GetScore(Gametime) % 4 == 0) {
-		if (allanime <= anime) {
-			anime = 0;
+	x = Score::Instance()->GetScore(PlayerX);
+	y = Score::Instance()->GetScore(PlayerY);
+
+	if (CheckHitKey(KEY_INPUT_LEFT)) {
+		if (CheckHitKey(KEY_INPUT_LSHIFT))
+		{
+			Score::Instance()->AddScore(PlayerX,-3.4);
 		}
-		else {
-			anime++;
+		else
+		{
+			Score::Instance()->AddScore(PlayerX, -9);
 		}
 	}
 
+	if (CheckHitKey(KEY_INPUT_RIGHT)) {
+		if (CheckHitKey(KEY_INPUT_LSHIFT))
+		{
+			Score::Instance()->AddScore(PlayerX, 3.4);
+		}
+		else
+		{
+			Score::Instance()->AddScore(PlayerX, 9);
+		}
+	}
+
+	if (CheckHitKey(KEY_INPUT_UP)) {
+		if (CheckHitKey(KEY_INPUT_LSHIFT))
+		{
+			Score::Instance()->AddScore(PlayerY, -3.4);
+		}
+		else
+		{
+			Score::Instance()->AddScore(PlayerY, -9.25);
+		}
+	}
+
+	if (CheckHitKey(KEY_INPUT_DOWN)) {
+		if (CheckHitKey(KEY_INPUT_LSHIFT))
+		{
+			Score::Instance()->AddScore(PlayerY, 3.4);
+		}
+		else
+		{
+			Score::Instance()->AddScore(PlayerY, 8.75);
+		}
+	}
 	return true;
 }
 
 void Player::draw() const
 {
+	DrawFormatString(352 + x, y - 120, GetColor(255, 255, 255), "Bouns Failed", Score::Instance()->GetScore(PlayerX));
+
 	SetDrawBlendMode(DX_BLENDMODE_ADD, 128);
-	DrawRotaGraphF(352 + Score::Instance()->GetScore(CameraX) + x, Score::Instance()->GetScore(CameraY) + y, 0.75, 0, _COMPASSIMAGES[1], true);
+	DrawFormatString(352 + x, y + 60, GetColor(255, 255, 255), "%d", Score::Instance()->GetScore(PlayerX));
+	DrawFormatString(352 + x, y + 72, GetColor(255, 255, 255), "%d", Score::Instance()->GetScore(PlayerY));
+	DrawRotaGraphF(352 + Score::Instance()->GetScore(CameraX) + x, Score::Instance()->GetScore(CameraY) + y, 0.75, 0, GameLoad::Instance()->Get(Compass_RED), true);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-	DrawRotaGraphF(352 + Score::Instance()->GetScore(CameraX) + x, Score::Instance()->GetScore(CameraY) + y, 1.5, 0, _IMAGES[anime], true);
+	DrawRotaGraphF(352 + Score::Instance()->GetScore(CameraX) + x, Score::Instance()->GetScore(CameraY) + y, 1.5, 0, GameLoad::Instance()->Get(PlayerImg), true);
 }

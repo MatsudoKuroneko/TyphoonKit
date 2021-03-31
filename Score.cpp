@@ -3,6 +3,8 @@
 const void Score::ResetScore()
 {
 	gametime, hscore, nscore, camerax, cameray = 0;
+	playerx = 576 / 2;
+	playery = 672 / 4 * 3;
 }
 
 const void Score::AddScore(eScore data, int v)
@@ -29,6 +31,14 @@ const void Score::AddScore(eScore data, int v)
 			cameray += v;
 			break;
 
+		case PlayerX:
+			playerx += v;
+			break;
+
+		case PlayerY:
+			playery += v;
+			break;
+
 	}
 }
 
@@ -49,6 +59,18 @@ const int Score::GetScore(eScore data)
 
 	case CameraY:
 		return cameray;
+		break;
+
+	case PlayerX:
+		return playerx;
+		break;
+
+	case PlayerY:
+		return playery;
+		break;
+
+	case Stage:
+		return stage;
 		break;
 
 	return -1;
@@ -81,6 +103,10 @@ const void Score::ConfirmScore(eScore data, int v)
 
 	case CameraY:
 		cameray = v;
+		break;
+
+	case Stage:
+		stage = v;
 		break;
 
 	}

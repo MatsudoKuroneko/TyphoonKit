@@ -24,6 +24,6 @@ public:
 
 	void update();
 	void draw() const;
-	void CreateShotA1(int x, int y, float speed, int angle, ShotDatas id, int delay);
-	int CreateShotA2(int x, int y, float speed, int angle, int accel, int maxspeed, ShotDatas id, int delay);
+	void CreateShotA1(int x, int y, float speed, float angle, ShotDatas id, int delay,bool rad = false, int pattern = 0, float custom = 0);
+	int CreateShotA2(int x, int y, float speed, float angle, int accel, int maxspeed, ShotDatas id, int delay);
 };

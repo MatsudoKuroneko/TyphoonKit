@@ -6,4 +6,7 @@ enum eScore {
 	NScore,
 	CameraX,
 	CameraY,
+	PlayerX,
+	PlayerY,
+	Stage,
 };

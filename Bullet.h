@@ -5,6 +5,8 @@
 #include "Sprite.h"
 #include "Score.h"
 #include "Define.h"
+#include "DammakuUtil.h"
+#include "ParticleManager.h"
 
 enum ShotDatas {
 	DS_BALL_S_RED,
@@ -60,7 +62,7 @@ private:
 		addGroup("Resource/img/bullet/medium.png", 9, 9, 1, 48, 48, M);
 		addGroup("Resource/img/bullet/dia.png", 22, 22, 1, 16, 32, D);
 		addGroup("Resource/img/bullet/diamono.png", 2, 2, 1, 16, 32, DM);
-		addGroup("Resource/img/bullet/fire.png", 4, 4, 1, 48, 48, FIRE);
+		addGroup("Resource/img/bullet/firepurple.png", 4, 4, 1, 48, 48, FIRE);
 	};
 	~ShotData() = default;
 	std::vector<int> _imgs;
@@ -155,17 +157,26 @@ public:
 class Bullet : public Sprite
 {
 public:
-	Bullet(int x, int y, float speed, int angle, float accel, int maxspeed, ShotDatas id, int delay,int special = 0) {
-		_x = 352 + Score::Instance()->GetScore(CameraX) + x;
-		_y = Score::Instance()->GetScore(CameraY) + y;
+	Bullet(int x, int y, float speed, float angle, float accel, int maxspeed, ShotDatas id, int delay,bool rad,int pattern,float custom) {
+		_x = x;
+		_y = y;
 		_speed = speed;
 		_accel = accel;
 		_maxspeed = maxspeed;
-		_angle = angle * Define::PI / 180;
-		_showangle = (angle+90) * Define::PI / 180;
+		_age = 0;
+		if (rad == false) {
+			_angle = angle * Define::PI / 180;
+			_showangle = (angle + 90) * Define::PI / 180;
+		}
+		else {
+			_angle = angle;
+			_showangle = (angle*180/ Define::PI + 90) * Define::PI / 180;
+		}
+
 		_id = id;
+		_custom = custom;
 		_delay = Score::Instance()->GetScore(Gametime) + delay;
-		_special = special;
+		_pattern = pattern;
 	}
 	~Bullet() = default;
 
@@ -174,7 +185,8 @@ public:
 
 private:
 	ShotDatas _id;
-	int _special,_delay;
-	float _x, _y, _angle,_showangle, _speed,_accel, _maxspeed;
+	int _pattern,_delay,_age;
+	float _x, _y,_showangle, _speed,_accel, _maxspeed, _angle, _custom;
+	bool _exist = true;
 };
 

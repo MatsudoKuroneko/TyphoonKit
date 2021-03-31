@@ -3,8 +3,10 @@
 #include "BaseScene.h"
 #include <memory>
 #include "Load.h"
+#include "Define.h"
 #include "Player.h"
 #include "BulletManager.h"
+#include "EnemyManager.h"
 
 class GameScene : public BaseScene
 {
@@ -21,8 +23,6 @@ public:
 private:
 	int _level;
 	int gametime;
-	void CreateShotA1(int x, int y, float speed, int angle, ShotDatas id, int delay);
 	std::shared_ptr<Player> _player;
 
 };
-

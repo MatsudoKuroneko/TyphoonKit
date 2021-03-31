@@ -14,9 +14,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 	SetWindowSizeChangeEnableFlag(TRUE);
 	//SetOutApplicationLogValidFlag(FALSE);
-	SetMainWindowText("Danmaku Template");
+	SetMainWindowText("東方輝幻郷 Ver0.01a (まちカドまぞく2期放送記念バージョン)");
 	//SetWindowSizeExtendRate(0.75);
-	DxLib_Init();
+	ChangeFont("Russell Square");
+	if (DxLib_Init()) {
+		return false;
+	}
 	SetUseCharCodeFormat(DX_CHARCODEFORMAT_UTF8);
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING);
 	SetFontThickness(0);
@@ -41,18 +44,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager sman;
 	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen()) {
 
+		if (!sman.loop()) {
+			break;
+		}
+
 		if (CheckHitKey(KEY_INPUT_P)) {
 			DATEDATA Date;
 			SaveDrawScreen(0, 0, 1280, 960, "ss.bmp");
 			DrawFormatString(1200, 600, GetColor(255, 255, 255), "Shot!->ss.bmp");
 		}
+
 		FPS_Update();
 		FPS_Draw();
 		FPS_Wait();
-
-		if (!sman.loop()) {
-			break;
-		}
 	}
 
 	DxLib_End();

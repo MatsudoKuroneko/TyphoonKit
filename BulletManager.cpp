@@ -16,8 +16,7 @@ void BulletManager::draw() const
 	return;
 }
 
-void BulletManager::CreateShotA1(int x, int y, float speed, int angle, ShotDatas id, int delay)
+void BulletManager::CreateShotA1(int x, int y, float speed, float angle, ShotDatas id, int delay, bool rad,int pattern,float custom)
 {
-	_bullets.emplace_back(std::make_shared<Bullet>(x, y, 0, angle, 0, speed, id,delay));
-
+	_bullets.emplace_back(std::make_shared<Bullet>(x, y, 0, angle, 0, speed, id,delay,rad,pattern,custom));
 }

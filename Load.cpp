@@ -16,6 +16,70 @@ const int StartLoad::Get(Loads data)
     return 0;
 }
 
+GameLoad::GameLoad() {
+	addSingle("Resource/img/bg/1.jpg");
+	addGroup("Resource/img/spdot/player_reimu.png", 6, 2, 3, 48, 48, _IMAGES);
+	addGroup("Resource/img/spdot/compass.png", 3, 3, 1, 300, 300, _COMPASSIMAGES);
+	printfDx("StartLoad: Loaded.\n");
+}
+
+const int GameLoad::Get(Loads data)
+{
+	switch (data)
+	{
+	case(bg):
+		return _imgs[0];
+	case(PlayerImg):
+		if (Score::Instance()->GetScore(Gametime) % 4 == 0) {
+			if (pallanime <= panime) {
+				panime = 0;
+			}
+			else {
+				panime++;
+			}
+		}
+		return _imgs[1+panime];
+	case(Compass_RED):
+		return _imgs[7];
+	case(Compass_GREEN):
+		return _imgs[8];
+	case(Compass_BLUE):
+		return _imgs[9];
+	}
+	return 0;
+}
+
+
+/*!
+@brief ¡‚Ü‚Åƒ[ƒh‚µ‚½‰æ‘œ‚ð‰ð•ú‚·‚é
+*/
+void GameLoad::release()
+{
+	const int size = _imgs.size();
+	for (int i = 0; i < size; i++) {
+		DeleteGraph(_imgs[i]);
+	}
+	_imgs.clear();
+}
+
+void GameLoad::addSingle(const char* fileName)
+{
+	int ret = LoadGraph(fileName);
+	_imgs.push_back(ret);
+
+	return;
+}
+
+
+void GameLoad::addGroup(const char* fileName, int n, int xn, int yn, int w, int h, int* buf)
+{
+	int ret = LoadDivGraph(fileName, n, xn, yn, w, h, buf);
+	for (int i = 0; i < n; i++) {
+		_imgs.push_back(buf[i]);
+	}
+	return;
+}
+
 
 St1Load::St1Load() {
 	addSingle("Resource/img/bg/1.jpg");

@@ -6,7 +6,9 @@ class Score
 {
 private:
 	Score() {};
-	int gametime,hscore, nscore, camerax, cameray;
+	int gametime,hscore, nscore, camerax, cameray,stage = 0;
+	int playerx = 576 / 2;
+	int playery = 672 / 4 * 3;
 
 public:
 	static Score* Instance() {
