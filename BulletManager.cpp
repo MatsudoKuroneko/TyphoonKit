@@ -2,9 +2,27 @@
 
 void BulletManager::update()
 {
-	for (auto& e : _bullets) {
-		e->update();
+
+
+	auto it = _bullets.begin();
+	while (it != _bullets.end())
+	{
+		(*it)->update();
+
+
+		if ((*it)->_exist == false)
+		{
+			BulletBreakManager::Instance()->Create_BB((*it)->_x, (*it)->_y, BB_PURPLE);
+			it = _bullets.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+
 	}
+
+
 	return;
 }
 

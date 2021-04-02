@@ -6,7 +6,7 @@
 #include "Score.h"
 #include "Define.h"
 #include "DammakuUtil.h"
-#include "ParticleManager.h"
+#include "BulletBreakManager.h"
 
 enum ShotDatas {
 	DS_BALL_S_RED,
@@ -182,11 +182,12 @@ public:
 
 	virtual bool update() override;
 	virtual void draw() const override;
+	bool _exist = true;
+	float _x, _y;
 
 private:
 	ShotDatas _id;
 	int _pattern,_delay,_age;
-	float _x, _y,_showangle, _speed,_accel, _maxspeed, _angle, _custom;
-	bool _exist = true;
+	float _showangle, _speed,_accel, _maxspeed, _angle, _custom;
 };
 

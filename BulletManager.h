@@ -2,6 +2,7 @@
 
 #include "Sprite.h"
 #include "Bullet.h"
+#include "BulletBreakManager.h"
 #include <vector>
 #include <memory>
 

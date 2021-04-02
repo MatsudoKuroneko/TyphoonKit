@@ -4,6 +4,7 @@
 #include "Score.h"
 #include "BulletManager.h"
 #include "ParticleManager.h"
+#include "BulletBreakManager.h"
 
 
 bool loaded;
@@ -21,12 +22,13 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const Parameter& parameter):
 	_player = std::make_shared<Player>();
 	_level = parameter.get(ParameterTagLevel);
 	Score::Instance()->ResetScore();
-	Score::Instance()->ConfirmScore(Stage,1);
+	Score::Instance()->ConfirmScore(Stage,7);
 	GameLoad::Instance()->load();
 	St1Load::Instance()->load();
 	BulletManager::Instance()->load();
 	EnemyManager::Instance()->load();
 	ParticleManager::Instance()->load();
+	BulletBreakManager::Instance()->load();
 }
 
 void GameScene::update()
@@ -41,6 +43,8 @@ void GameScene::update()
 	BulletManager::Instance()->update();
 	EnemyManager::Instance()->update();
 	ParticleManager::Instance()->update();
+	BulletBreakManager::Instance()->update();
+
 	Score::Instance()->AddScore(Gametime, 1);
 
 	if(stage == 1){
@@ -82,6 +86,7 @@ void GameScene::draw() const
 	EnemyManager::Instance()->draw();
 	ParticleManager::Instance()->draw();
 	BulletManager::Instance()->draw();
+	BulletBreakManager::Instance()->draw();
 	DrawFormatString(100, 200, GetColor(255, 255, 255), "%d", gametime);
 	DrawFormatString(100, 244, GetColor(255, 255, 255), "%d", threedsize);
 	DrawGraph(0, 0, StartLoad::Instance()->Get(Frame), TRUE);

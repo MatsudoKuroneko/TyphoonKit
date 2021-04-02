@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletBreak.cpp" />
+    <ClCompile Include="BulletBreakManager.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="DammakuUtil.cpp" />
     <ClCompile Include="Define.cpp" />
@@ -174,6 +176,8 @@
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletBreak.h" />
+    <ClInclude Include="BulletBreakManager.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="DammakuUtil.h" />
     <ClInclude Include="Enemy.h" />

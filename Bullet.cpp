@@ -9,20 +9,26 @@ bool Bullet::update()
         _x += cos(_angle) * _maxspeed;
         _y += sin(_angle) * _maxspeed;
 
+        if (CheckHitKey(KEY_INPUT_X)) {
+            _exist = false;
+        }
+
         if (_pattern == 1) {
             _angle = (_angle * 180 / Define::PI + _custom) * Define::PI / 180;
             _showangle = (_angle * 180 / Define::PI + 90 + _custom) * Define::PI / 180;
 
             if (_age > 715) {
-                ParticleManager::Instance()->Particle_Create(_x, _y, YELLOW);
+               // ParticleManager::Instance()->Particle_Create(_x, _y, YELLOW);
                 _exist = false;
+               
             }
 
         }
 
 
-        return true;
+        
     }
+    return true;
 }
 
 void Bullet::draw() const
@@ -38,5 +44,6 @@ void Bullet::draw() const
         if (_id > 18)
             SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
     }
+
 
 }

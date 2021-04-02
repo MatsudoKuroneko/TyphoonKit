@@ -94,6 +94,8 @@ public:
 	}
 	~Enemy() = default;
 
+	bool _exist = true;
+	
 	virtual bool update() override;
 	virtual void draw() const override;
 private:
@@ -101,7 +103,7 @@ private:
 	int _x,_showx,_hp,_pattern,_age, _delay, _rotation, _custom, _bulletcount;
 	short int _upcount;
 	float _y,_showyd,_speed, _imgsize, _mx, _my;
-	bool exist, _updirection = true;
+	bool _updirection = true;
 
 };
 

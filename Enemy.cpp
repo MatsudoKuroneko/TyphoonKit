@@ -81,7 +81,7 @@ bool Enemy::update()
 
 			if (_age % 20 == 0 && _age <= 400 && _age >= 300) {
 				for (int i = 0; i < 360; i += 20) {
-					BulletManager::Instance()->CreateShotA1(_x, _y, 3.9, i, DS_FIRE_RED, 100, false, 1, -1);
+					BulletManager::Instance()->CreateShotA1(_x, _y, 4.2, i, DS_FIRE_RED, 100, false, 1, -1);
 				}
 			}
 
@@ -103,32 +103,8 @@ void Enemy::draw() const
 
 			SetDrawBlendMode(DX_BLENDMODE_ADD, 64);
 
-			if (_image == REIKON_RED) {
-				DrawRotaGraph(_showx, _y + 5, 0.25, (_rotation)*Define::PI / 180, GameLoad::Instance()->Get(Compass_RED), true);
-			}
-			if (_image == REIKON_ORANGE) {
-				DrawRotaGraph(_showx, _y + 5, 0.25, (_rotation)*Define::PI / 180, GameLoad::Instance()->Get(Compass_RED), true);
-			}
-			if (_image == REIKON_YELLOW) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, YELLOW);
-			}
-			if (_image == REIKON_GREEN) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, GREEN);
-			}
-			if (_image == REIKON_SKY) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, SKY);
-			}
-			if (_image == REIKON_BLUE) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, BLUE);
-			}
-			if (_image == REIKON_PURPLE) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, PURPLE);
-			}
-			if (_image == REIKON_WHITE) {
-				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, WHITE);
-			}
 
-			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
 
 			if (_image == REIKON_RED) {
 				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, RED);
@@ -160,6 +136,8 @@ void Enemy::draw() const
 			if (_image == REIKON_WHITE) {
 				if (_age % 4 == 0)ParticleManager::Instance()->Particle_Create(_showx, _y, WHITE);
 			}
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
 
 			DrawRotaGraph(_showx, _y, _imgsize, 0, EnemyImage::Instance()->Get(_image), true);
 		}
