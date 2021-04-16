@@ -6,7 +6,7 @@ class Score
 {
 private:
 	Score() {};
-	int gametime,hscore, nscore, camerax, cameray,stage = 0;
+	int gametime,hscore, nscore, camerax, cameray,stage,hp,c,s0,s1,s2, s0lv, s1lv, s2lv, s0r,s1r,s2r,s0g,s1g,s2g,s0b,s1b,s2b, nowslot = 0;
 	int playerx = 576 / 2;
 	int playery = 672 / 4 * 3;
 

@@ -17,7 +17,8 @@ const int StartLoad::Get(Loads data)
 }
 
 GameLoad::GameLoad() {
-	addSingle("Resource/img/bg/1.jpg");
+	//addSingle("Resource/img/bg/1.jpg");
+	addSingle("Resource/img/ui/sample.png");
 	addGroup("Resource/img/spdot/player_reimu.png", 6, 2, 3, 48, 48, _IMAGES);
 	addGroup("Resource/img/spdot/compass.png", 3, 3, 1, 300, 300, _COMPASSIMAGES);
 	printfDx("StartLoad: Loaded.\n");
@@ -49,7 +50,6 @@ const int GameLoad::Get(Loads data)
 	return 0;
 }
 
-
 /*!
 @brief 今までロードした画像を解放する
 */
@@ -77,6 +77,41 @@ void GameLoad::addGroup(const char* fileName, int n, int xn, int yn, int w, int 
 	for (int i = 0; i < n; i++) {
 		_imgs.push_back(buf[i]);
 	}
+	return;
+}
+
+GameLoadSE::GameLoadSE() {
+	addSingle("Resource/se/dmg01.wav");
+	addSingle("Resource/se/charge00.ogg");
+	addSingle("Resource/se/charge01.ogg");
+	addSingle("Resource/se/missing.ogg");
+	addSingle("Resource/se/pshot.ogg");
+	addSingle("Resource/se/shot1.ogg");
+	printfDx("GameLoadSE: Loaded.\n");
+}
+
+const int GameLoadSE::Get(LoadSEs data)
+{
+	return _ses[data];
+}
+
+/*!
+@brief 今までロードした画像を解放する
+*/
+void GameLoadSE::release()
+{
+	const int size = _ses.size();
+	for (int i = 0; i < size; i++) {
+		DeleteSoundMem(_ses[i]);
+	}
+	_ses.clear();
+}
+
+void GameLoadSE::addSingle(const char* fileName)
+{
+	int ret = LoadSoundMem(fileName);
+	_ses.push_back(ret);
+
 	return;
 }
 

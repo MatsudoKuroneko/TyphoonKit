@@ -12,6 +12,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetGraphMode(1280, 720, 16, 60);
 	ChangeWindowMode(TRUE);
 	SetDrawScreen(DX_SCREEN_BACK);
+	//SetWindowStyleMode(9);
+	SetAlwaysRunFlag(TRUE);
 	SetWindowSizeChangeEnableFlag(TRUE);
 	//SetOutApplicationLogValidFlag(FALSE);
 	SetMainWindowText("東方輝幻郷 Ver0.01a (まちカドまぞく2期放送記念バージョン)");

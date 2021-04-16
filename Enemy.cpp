@@ -15,18 +15,18 @@ bool Enemy::update()
 				}
 				else {
 					if (_age % 5 == 0 && _bulletcount <= 3) {
-						BulletManager::Instance()->CreateShotA1(_x, _y, 4, DKHorming(Score::Instance()->GetScore(PlayerX), Score::Instance()->GetScore(PlayerY), _x, _y), DS_FIRE_RED, 0, true);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 4, DKHorming(Score::Instance()->GetScore(PlayerX), Score::Instance()->GetScore(PlayerY), _x, _y), DS_BALL_S_PINK, 0, true);
 						_bulletcount++;
 					}
 
 					if (_bulletcount == 4) {
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_FIRE_RED, 0);
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_FIRE_RED, 10);
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_FIRE_RED, 20);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_DIA_RED, 0);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_DIA_RED, 10);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, _custom, DS_DIA_RED, 20);
 
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_FIRE_RED, 0);
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_FIRE_RED, 10);
-						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_FIRE_RED, 20);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_DIA_RED, 0);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_DIA_RED, 10);
+						BulletManager::Instance()->CreateShotA1(_x, _y, 5, 180 + _custom, DS_DIA_RED, 20);
 						_bulletcount++;
 					}
 				}

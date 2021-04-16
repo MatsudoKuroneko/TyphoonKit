@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
+    <ClCompile Include="BGMLoad.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletBreak.cpp" />
     <ClCompile Include="BulletBreakManager.cpp" />
@@ -175,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
+    <ClInclude Include="BGMLoad.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletBreak.h" />
     <ClInclude Include="BulletBreakManager.h" />

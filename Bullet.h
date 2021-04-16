@@ -177,6 +177,19 @@ public:
 		_custom = custom;
 		_delay = Score::Instance()->GetScore(Gametime) + delay;
 		_pattern = pattern;
+
+		if (_id == DS_BALL_S_RED || _id == DS_BALL_S_ORANGE || _id == DS_BALL_S_PINK || _id == DS_BALL_M_RED || _id == DS_BALL_M_ORANGE || _id == DS_BALL_M_PINK || _id == DS_DIA_RED || _id == DS_DIA_ORANGE || _id == DS_DIA_PINK || _id == DS_DIA_DARK_RED || _id == DS_DIA_DARK_ORANGE || _id == DS_DIA_DARK_PINK) {
+			_systemcolor = 0;
+		}
+		else if (_id == DS_BALL_S_SKY || _id == DS_BALL_S_BLUE || _id == DS_BALL_S_PURPLE || _id == DS_BALL_M_SKY || _id == DS_BALL_M_BLUE || _id == DS_BALL_M_PURPLE || _id == DS_DIA_SKY || _id == DS_DIA_BLUE || _id == DS_DIA_PURPLE || _id == DS_DIA_DARK_SKY || _id == DS_DIA_DARK_BLUE || _id == DS_DIA_DARK_PURPLE || _id == DS_DIA_DARKBLUE || _id == DS_DIA_DARK_DARKBLUE) {
+			_systemcolor = 1;
+		}
+		else if (_id == DS_BALL_S_GREEN || _id == DS_BALL_S_YELLOW || _id == DS_BALL_M_GREEN || _id == DS_BALL_M_YELLOW || _id == DS_DIA_GREEN || _id == DS_DIA_YELLOW || _id == DS_DIA_DARK_GREEN || _id == DS_DIA_DARK_YELLOW || _id == DS_DIA_LEAF || _id == DS_DIA_DARK_LEAF) {
+			_systemcolor = 2;
+		}
+		else {
+			_systemcolor = 3;
+		}
 	}
 	~Bullet() = default;
 
@@ -189,5 +202,6 @@ private:
 	ShotDatas _id;
 	int _pattern,_delay,_age;
 	float _showangle, _speed,_accel, _maxspeed, _angle, _custom;
+	bool _bomb, _systemcolor;
 };
 

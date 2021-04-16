@@ -12,6 +12,15 @@ enum Loads {
 	Compass_BLUE,
 };
 
+enum LoadSEs {
+	PUpAvailable,
+	Charge00,
+	Charge01,
+	Miss,
+	PShot,
+	Shot1,
+};
+
 class StartLoad
 {
 private:
@@ -53,6 +62,27 @@ public:
 
 	const int Get(Loads data);
 	int _IMAGES[6], _COMPASSIMAGES[3];
+};
+
+class GameLoadSE
+{
+private:
+	GameLoadSE();
+	~GameLoadSE() = default;
+	std::vector<int> _ses;
+
+public:
+
+	static GameLoadSE* Instance() {
+		static GameLoadSE inst;
+		return &inst;
+	};
+
+	void load() {  }//コンストラクタ起動用。SceneManagerで起動させるようにする。
+	void release();
+	void addSingle(const char* fileName);
+
+	const int Get(LoadSEs data);
 };
 
 

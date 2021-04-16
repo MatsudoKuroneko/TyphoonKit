@@ -1,10 +1,11 @@
 
-#include "Player.h"
 #include <DxLib.h>
 #include <iostream>
 #include "Score.h"
 #include "GameScene.h"
 #include "Load.h"
+
+static bool push = 0;
 
 Player::Player()
 {
@@ -58,6 +59,15 @@ bool Player::update()
 		{
 			Score::Instance()->AddScore(PlayerY, 8.75);
 		}
+	}
+	if (CheckHitKey(KEY_INPUT_LSHIFT) && CheckHitKey(KEY_INPUT_Z)) {
+		if(push == 0){
+		PlaySoundMem(GameLoadSE::Instance()->Get(Charge00), DX_PLAYTYPE_BACK);
+		push = 1;
+		}
+	}
+	else {
+		push = 0;
 	}
 	return true;
 }

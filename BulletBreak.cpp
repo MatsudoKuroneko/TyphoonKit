@@ -10,7 +10,7 @@ bool BulletBreak::update() {
 
 void BulletBreak::draw() const
 {
-	SetDrawBlendMode(DX_BLENDMODE_ADD, 128);
+	SetDrawBlendMode(DX_BLENDMODE_ADD, 192);
 
 	if (_i < 9)
 	{

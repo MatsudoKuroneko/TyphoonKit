@@ -4,3 +4,5 @@
 #include <DxLib.h>
 
 double DKHorming(double x1, double y1, double x2, double y2);
+
+double DKDistance(double x1, double y1, double x2, double y2);

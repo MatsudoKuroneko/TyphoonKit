@@ -5,6 +5,7 @@
 #include "BulletManager.h"
 #include "ParticleManager.h"
 #include "BulletBreakManager.h"
+#include "BGMLoad.h"
 
 
 bool loaded;
@@ -22,13 +23,16 @@ GameScene::GameScene(IOnSceneChangedListener* impl, const Parameter& parameter):
 	_player = std::make_shared<Player>();
 	_level = parameter.get(ParameterTagLevel);
 	Score::Instance()->ResetScore();
-	Score::Instance()->ConfirmScore(Stage,7);
+	Score::Instance()->ConfirmScore(Stage,1);
 	GameLoad::Instance()->load();
+	GameLoadSE::Instance()->load();
 	St1Load::Instance()->load();
 	BulletManager::Instance()->load();
 	EnemyManager::Instance()->load();
 	ParticleManager::Instance()->load();
 	BulletBreakManager::Instance()->load();
+	BGMLoad::Instance()->load();
+	
 }
 
 void GameScene::update()
@@ -45,9 +49,14 @@ void GameScene::update()
 	ParticleManager::Instance()->update();
 	BulletBreakManager::Instance()->update();
 
+
 	Score::Instance()->AddScore(Gametime, 1);
 
 	if(stage == 1){
+		if (gametime == 0) {
+			BGMLoad::Instance()->LoadBGM(1);
+			PlaySoundMem(BGMLoad::Instance()->GetRoad(), DX_PLAYTYPE_LOOP);
+		}
 
 	if(gametime == 100){
 		EnemyManager::Instance()->Enemy_Create(Define::AREA_X / 12 * 1, -20, 0, 100, REIKON_RED,   0, 0, 90 - 30);
@@ -81,8 +90,10 @@ void GameScene::update()
 void GameScene::draw() const
 {
 
-	DrawBillboard3D(VGet(320.0f, 240.0f, 0), 0.5f, 0.5f, 1200, 0.0f, St1Load::Instance()->Get(bg), TRUE);
+	//DrawBillboard3D(VGet(320.0f, 240.0f, 0), 0.5f, 0.5f, 1200, 0.0f, St1Load::Instance()->Get(bg), TRUE);
 	_player->draw();
+	DrawGraph(0, 0, GameLoad::Instance()->Get(bg), FALSE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	EnemyManager::Instance()->draw();
 	ParticleManager::Instance()->draw();
 	BulletManager::Instance()->draw();
@@ -90,6 +101,7 @@ void GameScene::draw() const
 	DrawFormatString(100, 200, GetColor(255, 255, 255), "%d", gametime);
 	DrawFormatString(100, 244, GetColor(255, 255, 255), "%d", threedsize);
 	DrawGraph(0, 0, StartLoad::Instance()->Get(Frame), TRUE);
+
 }
 
 int GameScene::GetImage(Loads data) const {
